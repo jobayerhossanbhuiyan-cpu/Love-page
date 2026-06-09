@@ -1,0 +1,130 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Story ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg,#ff4d6d,#ff8fab);
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    margin-top:50px;
+    position:relative;
+    z-index:2;
+}
+
+img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid white;
+}
+
+h1{
+    font-size:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    margin:20px auto;
+    width:85%;
+    max-width:500px;
+    border-radius:20px;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>❤️ Zobayer & Karina ❤️</h1>
+
+<img src="photo.jpg" alt="Love">
+
+<div class="card">
+    <h2>My Love Message 💌</h2>
+    <p>
+        You are my happiness, my peace,
+        and my favorite person in the world.
+        I love you forever. ❤️
+    </p>
+
+    <h3>Together Since</h3>
+    <h2 id="counter"></h2>
+</div>
+
+<!-- নিজের mp3 ফাইলের নাম দিন -->
+<audio autoplay loop controls>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+// Relationship start date
+let start = new Date("2025-01-01");
+
+function updateCounter(){
+    let now = new Date();
+    let diff = now - start;
+
+    let days = Math.floor(diff/(1000*60*60*24));
+
+    document.getElementById("counter").innerHTML =
+    days + " Days ❤️";
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+
+// Floating Hearts
+function createHeart(){
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (20 + Math.random()*30)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
